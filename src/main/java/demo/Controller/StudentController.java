@@ -39,7 +39,7 @@ public class StudentController {
         return "addStudent";
     }
 
-    @PutMapping(value = "/addstudent")
+    @PostMapping(value = "/addstudent")
     public void addStudent(@ModelAttribute Student student,@ModelAttribute Address address){
         this.studentService.addStudent(student);
     }

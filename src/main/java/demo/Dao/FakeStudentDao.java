@@ -39,6 +39,11 @@ public class FakeStudentDao implements StudentDao {
         return studentHashMap.values();
     }
 
+    public void addStudent(Student student, Address address) {
+        addressHashMap.put(Math.toIntExact(student.getId()),address);
+        studentHashMap.put(Math.toIntExact(student.getId()),student);
+    }
+
     @Override
     public void addStudent(Student student) {
 
