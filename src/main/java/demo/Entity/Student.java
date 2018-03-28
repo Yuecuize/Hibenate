@@ -1,7 +1,5 @@
 package demo.Entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -10,11 +8,8 @@ import javax.validation.constraints.NotNull;
 public class Student {
     public Student() {
     }
-
-    @NotNull
-    @Id
     @Column(name = "id")
-    private long id;
+    private int id;
 
     @NotNull
     @Column(name ="name")
@@ -29,7 +24,7 @@ public class Student {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

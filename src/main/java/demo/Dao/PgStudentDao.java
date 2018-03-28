@@ -1,5 +1,6 @@
 package demo.Dao;
 
+import demo.Entity.Address;
 import demo.Entity.Student;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -27,17 +28,23 @@ public class PgStudentDao implements StudentDao {
     }
 
     @Override
+    public void addStudent(Student student, Address address) {
+        em.persist(student);
+        em.persist(address);
+    }
+
+    @Override
     public void updateStudent(Student student) {
         em.merge(student);
     }
 
     @Override
-    public void removeStudent(Student student) {
-        em.remove(student);
+    public void removeStudentById(int id) {
+
     }
 
     @Override
-    public Student getStudentById(long id) {
+    public Student getStudentById(int id) {
         Student student = em.find(Student.class, id);
     //    Student student = null;
         if(student!=null){

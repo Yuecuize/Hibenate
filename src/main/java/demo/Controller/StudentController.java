@@ -35,16 +35,32 @@ public class StudentController {
         return "addStudent";
     }
 
+    @PostMapping(value = "/addstudent")
+    public String addStudent(@ModelAttribute("student") Student student,@ModelAttribute("address") Address address, Model model){
+        this.studentService.addStudent(student,address);
+        return "success";
+    }
+
     public String addStudent(@ModelAttribute Student student){
         return "addStudent";
     }
 
-    @PostMapping(value = "/addstudent")
-    public void addStudent(@ModelAttribute Student student,@ModelAttribute Address address){
-        this.studentService.addStudent(student);
+    @PostMapping(value = "/get")
+    public String getStudentById(@RequestParam("id") int id, Model model){
+
+        return "redirect:/student/get/"+id;
     }
+
     @GetMapping(value = "/get/{id}")
-    public Student getStudentById(@PathVariable("id")long id){
-        return this.studentService.getStudentById(id);
+    public String getStudentById(@PathVariable("id")int id,@ModelAttribute("student") Student student,Model model){
+        student = this.studentService.getStudentById(id);
+        model.addAttribute(student);
+        return "studentsView";
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public String deleteStudentById(@PathVariable("id") int id, Model model){
+        this.studentService.removeStudentById(id);
+        return "redirect:/student/all";
     }
 }

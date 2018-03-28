@@ -40,8 +40,9 @@ public class FakeStudentDao implements StudentDao {
     }
 
     public void addStudent(Student student, Address address) {
-        addressHashMap.put(Math.toIntExact(student.getId()),address);
-        studentHashMap.put(Math.toIntExact(student.getId()),student);
+        student.setAddress(address);
+        addressHashMap.put(student.getId(),address);
+        studentHashMap.put(student.getId(),student);
     }
 
     @Override
@@ -55,12 +56,13 @@ public class FakeStudentDao implements StudentDao {
     }
 
     @Override
-    public void removeStudent(Student student) {
-
+    public void removeStudentById(int id) {
+        studentHashMap.remove(id);
+        addressHashMap.remove(id);
     }
 
     @Override
-    public Student getStudentById(long id) {
-        return null;
+    public Student getStudentById(int id) {
+        return studentHashMap.get(id);
     }
 }

@@ -2,30 +2,53 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-          rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <title>StudentForm</title>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{'/student/all'}">All Students</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{'/student/addstudent'}">Add Student</a>
+        </li>
+    </ul>
+    <form class="form-inline" th:action="@{get}" method="post" th:object="${student}">
+        <input class="form-control mr-sm-2" type="text" th:name="id" placeholder="Search">
+        <button class="btn btn-success" type="submit">Search By Id</button>
+    </form>
+</nav>
+
 <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
+    <div class="col-sm-12">
         <div th:if="${not #lists.isEmpty(student)}">
-            <h2>Product List</h2>
+            <h2>Student List</h2>
             <table class="table table-striped">
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
                     <th>Course</th>
                     <th>Grade</th>
-                    <th>Address</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th></th>
+
                 </tr>
-                <tr th:each="student : ${student}">
-                    <td th:text="${student.id}"></td>
-                    <td th:text="${student.name}"></td>
-                    <td th:text="${student.course}"></td>
-                    <td th:text="${student.grade}"></td>
-                    <td th:text="${student.address.city+','+student.address.country}"></td>
+                <tr th:each="students : ${student}">
+                    <td th:text="${students.id}"></td>
+                    <td th:text="${students.name}"></td>
+                    <td th:text="${students.course}"></td>
+                    <td th:text="${students.grade}"></td>
+                    <td th:text="${students.address.country}"></td>
+                    <td th:text="${students.address.city}"></td>
+                    <td>
+                        <form th:action="@{delete/{id}(id=${students.id}) }" th:method="delete">
+                            <button type="submit" class="btn btn-danger btn-sm">DELETE</button>
+                        </form>
+                    </td>
                 </tr>
             </table>
         </div>

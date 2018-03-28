@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Success</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{'/student/all'}">All Students</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{'/student/addstudent'}">Add Student</a>
+        </li>
+    </ul>
+    <form class="form-inline" th:action="@{get}" method="post" th:object="${student}">
+        <input class="form-control mr-sm-2" type="text" th:name="id" placeholder="Search">
+        <button class="btn btn-success" type="submit">Search By Id</button>
+    </form>
+</nav>
+
+<h1>Success!</h1>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package demo.Dao;
 
+import demo.Entity.Address;
 import demo.Entity.Student;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +12,8 @@ import java.util.Collection;
 public interface StudentDao {
     Collection<Student> getAllStudents();
     void addStudent(Student student);
+    void addStudent(Student student, Address address);
     void updateStudent(Student student);
-    void removeStudent(Student student);
-    Student getStudentById(long id);
+    void removeStudentById(int id);
+    Student getStudentById(int id);
 }
