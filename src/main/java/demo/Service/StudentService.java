@@ -15,7 +15,7 @@ public class StudentService {
     private final StudentDao studentDao;
 
     @Autowired
-    public StudentService(@Qualifier("Postgres") StudentDao studentDao) {
+    public StudentService(@Qualifier("fakeData") StudentDao studentDao) {
         this.studentDao = studentDao;
     }
 

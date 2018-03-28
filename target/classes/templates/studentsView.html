@@ -6,7 +6,6 @@
     <title>StudentForm</title>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -21,39 +20,42 @@
         <button class="btn btn-success" type="submit">Search By Id</button>
     </form>
 </nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div th:if="${not #lists.isEmpty(student)}">
+                <h2>Student List</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Grade</th>
+                        <th>Country</th>
+                        <th>City</th>
+                        <th></th>
 
-<div class="row">
-    <div class="col-sm-12">
-        <div th:if="${not #lists.isEmpty(student)}">
-            <h2>Student List</h2>
-            <table class="table table-striped">
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Course</th>
-                    <th>Grade</th>
-                    <th>Country</th>
-                    <th>City</th>
-                    <th></th>
-
-                </tr>
-                <tr th:each="students : ${student}">
-                    <td th:text="${students.id}"></td>
-                    <td th:text="${students.name}"></td>
-                    <td th:text="${students.course}"></td>
-                    <td th:text="${students.grade}"></td>
-                    <td th:text="${students.address.country}"></td>
-                    <td th:text="${students.address.city}"></td>
-                    <td>
-                        <form th:action="@{delete/{id}(id=${students.id}) }" th:method="delete">
-                            <button type="submit" class="btn btn-danger btn-sm">DELETE</button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
+                    </tr>
+                    <tr th:each="students : ${student}">
+                        <td th:text="${students.id}"></td>
+                        <td th:text="${students.name}"></td>
+                        <td th:text="${students.course}"></td>
+                        <td th:text="${students.grade}"></td>
+                        <td th:text="${students.address.country}"></td>
+                        <td th:text="${students.address.city}"></td>
+                        <td>
+                            <form th:action="@{delete/{id}(id=${students.id}) }" th:method="delete">
+                                <button type="submit" class="btn btn-danger btn-sm">DELETE</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
 
+    </div>
 </div>
+
+
 </body>
 </html>

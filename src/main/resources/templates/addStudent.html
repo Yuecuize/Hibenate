@@ -23,40 +23,43 @@
 </nav>
 
 <div class="container">
-    <h2>Add a student</h2>
-    <form th:action="@{addstudent}" method="post" th:object="${student}">
-        <h4>Student</h4>
-        <div class="form-group row">
-            <div class="col-xs-3">
-                <label for="studentid">Id:</label>
-                <input type="text" class="form-control" id="studentid" placeholder="Enter id" th:field="*{id}">
+    <div class="row">
+        <h2>Add a student</h2>
+        <form th:action="@{addstudent}" method="post" th:object="${student}">
+            <h4>Student</h4>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="studentid">Id:</label>
+                    <input type="text" class="form-control" id="studentid" placeholder="Enter id" th:field="*{id}">
+                </div>
+                <div class="col-sm-3">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" th:field="*{name}">
+                </div>
+                <div class="col-sm-3">
+                    <label for="course">Course:</label>
+                    <input type="text" class="form-control" id="course" placeholder="Enter course" th:field="*{course}">
+                </div>
+                <div class="col-sm-3">
+                    <label for="course">Grade:</label>
+                    <input type="text" class="form-control" id="grade" placeholder="Enter grade" th:field="*{grade}">
+                </div>
             </div>
-            <div class="col-xs-3">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter name" th:field="*{name}">
+            <h4>Adress</h4>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="country">Country:</label>
+                    <input type="text" class="form-control" id="country" placeholder="Enter country" th:field="${address.country}">
+                </div>
+                <div class="col-sm-4">
+                    <label for="city">City:</label>
+                    <input type="text" class="form-control" id="city" placeholder="Enter city" th:field="${address.city}">
+                </div>
             </div>
-            <div class="col-xs-3">
-                <label for="course">Course:</label>
-                <input type="text" class="form-control" id="course" placeholder="Enter course" th:field="*{course}">
-            </div>
-            <div class="col-xs-3">
-                <label for="course">Grade:</label>
-                <input type="text" class="form-control" id="grade" placeholder="Enter grade" th:field="*{grade}">
-            </div>
-        </div>
-        <h4>Adress</h4>
-        <div class="form-group row">
-            <div class="col-xs-4">
-                <label for="country">Country:</label>
-                <input type="text" class="form-control" id="country" placeholder="Enter country" th:field="${address.country}">
-            </div>
-            <div class="col-xs-4">
-                <label for="city">City:</label>
-                <input type="text" class="form-control" id="city" placeholder="Enter city" th:field="${address.city}">
-            </div>
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+
 
 
 </div>
